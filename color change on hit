@@ -1,0 +1,24 @@
+local part = Instance.new("Part")
+part.Size = Vector3.new(4, 1, 4)
+part.Position = Vector3.new(0, 5, 0)
+part.Anchored = true
+part.BrickColor = BrickColor.new("Bright red")
+part.Parent = game.Workspace
+
+local red = BrickColor.new("Bright red")
+local blue = BrickColor.new("Bright blue")
+local currentColor = red
+
+local function onTouch(hit)
+	if hit.Parent and hit.Parent:FindFirstChild("Humanoid") then
+		if currentColor == red then
+			part.BrickColor = blue
+			currentColor = blue
+		else
+			part.BrickColor = red
+			currentColor = red
+		end
+	end
+end
+
+part.Touched:Connect(onTouch)
